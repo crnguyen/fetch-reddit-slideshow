@@ -7,7 +7,8 @@ let inputField = document.querySelector("input");
 
 document.addEventListener("DOMContentLoaded", function (){
     //images appear only when search button is clicked
-    searchButton.addEventListener("click", event => {
+    searchButton.addEventListener("click", (e) => {
+        e.preventDefault();
         const input = document.querySelector(".input").value;
         let searchInput = input.split(" ").join("+");
         let requestURL = "https://www.reddit.com/search.json?q=" +searchInput;
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function (){
         body.removeChild(resetButton);
         body.removeChild(inputField);
     
-
 fetch(requestURL)
 .then(response => {
     console.log(response);
